@@ -11,7 +11,6 @@ namespace PhotoAlbum
 
     public class PhotoAlbumAdmin : IPhotoAlbumAdmin
     {
-        private bool _exit;
         private readonly IAlbumFinderService albumFinderService;
 
         public PhotoAlbumAdmin(IAlbumFinderService albumFinderService)
@@ -21,7 +20,7 @@ namespace PhotoAlbum
 
         public async Task Run()
         {
-            while (!_exit)
+            while (true)
             {
                 Console.WriteLine("Enter 'exit' to stop the program");
                 Console.WriteLine("Enter album ID to filter by: (empty returns the full list)");
@@ -29,8 +28,7 @@ namespace PhotoAlbum
 
                 if (input == "exit")
                 {
-                    _exit = true;
-                    continue;
+                    break;
                 }
                 else
                 {
